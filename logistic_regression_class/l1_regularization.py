@@ -24,7 +24,7 @@ Y = np.round(sigmoid(X.dot(true_w) + np.random.randn(N)*0.5))
 costs = [] # keep track of squared error cost
 w = np.random.randn(D) / np.sqrt(D) # randomly initialize w
 learning_rate = 0.001
-l1 = 3.0 # try different values - what effect does it have on w?
+l1 = 8.7 # try different values - what effect does it have on w?
 for t in range(5000):
   # update w
   Yhat = sigmoid(X.dot(w))

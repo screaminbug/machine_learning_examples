@@ -15,16 +15,16 @@ R_outer = 10
 
 # distance from origin is radius + random normal
 # angle theta is uniformly distributed between (0, 2pi)
-R1 = np.random.randn(N/2) + R_inner
-theta = 2*np.pi*np.random.random(N/2)
+R1 = np.random.randn(N//2) + R_inner
+theta = 2*np.pi*np.random.random(N//2)
 X_inner = np.concatenate([[R1 * np.cos(theta)], [R1 * np.sin(theta)]]).T
 
-R2 = np.random.randn(N/2) + R_outer
-theta = 2*np.pi*np.random.random(N/2)
+R2 = np.random.randn(N//2) + R_outer
+theta = 2*np.pi*np.random.random(N//2)
 X_outer = np.concatenate([[R2 * np.cos(theta)], [R2 * np.sin(theta)]]).T
 
 X = np.concatenate([ X_inner, X_outer ])
-T = np.array([0]*(N/2) + [1]*(N/2)) # labels: first 50 are 0, last 50 are 1
+T = np.array([0]*(N//2) + [1]*(N//2)) # labels: first 50 are 0, last 50 are 1
 
 plt.scatter(X[:,0], X[:,1], c=T)
 plt.show()
@@ -37,7 +37,7 @@ ones = np.ones((N, 1))
 
 # add a column of r = sqrt(x^2 + y^2)
 r = np.zeros((N,1))
-for i in xrange(N):
+for i in range(N):
     r[i] = np.sqrt(X[i,:].dot(X[i,]))
 Xb = np.concatenate((ones, r, X), axis=1)
 
@@ -68,11 +68,11 @@ def cross_entropy(T, Y):
 # let's do gradient descent 100 times
 learning_rate = 0.0001
 error = []
-for i in xrange(5000):
+for i in range(5000):
     e = cross_entropy(T, Y)
     error.append(e)
     if i % 100 == 0:
-        print e
+        print(e)
 
     # gradient descent weight udpate with regularization
     # w += learning_rate * ( np.dot((T - Y).T, Xb) - 0.01*w ) # old
@@ -85,5 +85,5 @@ plt.plot(error)
 plt.title("Cross-entropy per iteration")
 plt.show()
 
-print "Final w:", w
-print "Final classification rate:", 1 - np.abs(T - np.round(Y)).sum() / N
+print("Final w:", w)
+print("Final classification rate:", 1 - np.abs(T - np.round(Y)).sum() / N)
