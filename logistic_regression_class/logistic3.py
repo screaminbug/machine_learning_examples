@@ -52,7 +52,7 @@ def cross_entropy(T, Y):
 
 # let's do gradient descent 100 times
 learning_rate = 0.1
-for i in range(100):
+for i in range(1000):
     if i % 10 == 0:
         print(cross_entropy(T, Y))
 
