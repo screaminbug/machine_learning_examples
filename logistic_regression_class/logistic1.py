@@ -24,4 +24,4 @@ z = Xb.dot(w)
 def sigmoid(z):
     return 1/(1 + np.exp(-z))
 
-print sigmoid(z)
+print(sigmoid(z))
